@@ -1,30 +1,40 @@
-# Go Internals Deep Dive
+# Advanced Go & Interview Prep
 
-Educational repo exploring Go runtime internals — one topic per standalone `main` package.
+Comprehensive preparation for senior Go interviews — runtime internals, system design, DSA patterns, and design patterns.
 
-## Topics
+## Structure
 
-| Directory | Topic |
-|-----------|-------|
-| `slicesgo/` | Slice header (`Data`, `Len`, `Cap`), backing-array reallocation, sub-slice sharing |
-| `mapsgo/` | `hmap` / `bmap` struct, hash seed, bucket overflow chains, load-factor resizing |
-| `memoryallocation/` | Stack vs. heap, escape analysis |
-| `goscheduler(GMP Model)/` | G (goroutine), M (OS thread), P (logical processor), netpoller, hand-off |
-| `channel-internals/` | `hchan` struct, circular ring buffer, sendq/recvq, direct-copy optimization, close semantics |
-| `garbage_collection_mechanidm/` | Tri-color concurrent mark & sweep, write barrier, `runtime.GC()` |
-| `bypassing_gc/` | `sync.Pool` GC bypass for high-throughput, reuse pattern |
-| `defer_panic_recover_internal/` | `_defer` struct, panic/recover internals, stack-allocated defer |
+| Category | Directory | What's Inside |
+|----------|-----------|--------------|
+| **Go Internals** | [`go-internals/`](./go-internals) | Slices, maps, memory allocator, GMP scheduler, channels, GC, defer/panic/recover, `sync.Pool` |
+| **System Design** | [`system-design/`](./system-design) | HLD MCQs — Rate Limiter, Consistent Hashing, Key-Value Store, URL Shortener, YouTube, Chat, News Feed, etc. |
+| **DSA Patterns** | [`dsa/`](./dsa) | 22 algorithm patterns with MCQs and Go solutions — Two Pointers, DP, BFS/DFS, Graphs, Trees, Backtracking, etc. |
+| **Design Patterns** | [`design-patterns/`](./design-patterns) | All 23 GoF patterns in Python with real-world examples |
+
+## Go Internals Topics
+
+| Topic | Dir |
+|-------|-----|
+| Slice internals | `go-internals/slicesgo/` |
+| Map internals | `go-internals/mapsgo/` |
+| Memory allocation & escape analysis | `go-internals/memoryallocation/` |
+| GMP Scheduler | `go-internals/goscheduler(GMP Model)/` |
+| Channel internals | `go-internals/channel-internals/` |
+| Garbage Collection | `go-internals/garbage_collection_mechanidm/` |
+| `sync.Pool` GC bypass | `go-internals/bypassing_gc/` |
+| Defer/Panic/Recover | `go-internals/defer_panic_recover_internal/` |
 
 ## Run
 
 ```bash
-go run ./slicesgo
-go run ./mapsgo
-# etc.
+# Go internals — each is a standalone main package
+go run ./go-internals/slicesgo
+go run ./go-internals/mapsgo
+
+# DSA solutions — run tests
+go test ./dsa/...
 ```
 
-No `go.mod` — every directory is a standalone `package main`.
+## Repo
 
-## System Design Interview Q&A
-
-Also contains [docs/](./docs) — 110 system design interview questions covering 11 chapters from the "Designing Data-Intensive Applications" problem set (Rate Limiter, Consistent Hashing, Key-Value Store, Unique ID Generator, URL Shortener, Web Crawler, Notification System, News Feed, Chat, Search Autocomplete, YouTube). Generated from an external question bank.
+Previously `advanced-go-internals`, restructured into topic categories for interview preparation.
